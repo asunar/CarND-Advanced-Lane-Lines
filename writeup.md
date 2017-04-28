@@ -122,5 +122,11 @@ Here's a [link to my video result](./processed_simple.mp4)
 ### Discussion
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+I spent a quite bit of time trying to debug my calibration code when I was unable to find any corners for the first image.
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+I guess conceptually I was unaware of the fact that camera calibration was a cumulative process and that skipping images does not significantly hurt the calibration
+
+
+First thing comes to mind is low visibility conditions. Due to the weather events lanes on the road may or may not be visible. That may make it difficult for the pipeline to detect the lanes lines on the road. Another issue may be other lines on the road that pipeline may mistake for a lane like tram or ground level train tracks.
+
+I think it will be important to calibrate the lane detection in the pipeline with more data. Maybe during a blizzard other sensors on the car may help determine where the road begins/ends.  
