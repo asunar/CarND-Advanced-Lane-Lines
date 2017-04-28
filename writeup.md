@@ -1,4 +1,4 @@
-## Advanced Lane Finding Project**
+## Advanced Lane Finding Project
 
 The goals / steps of this project are the following:
 
@@ -49,9 +49,14 @@ In the notebook, used a test image to view original and undistorted images side 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+I used a combination of color and gradient thresholds to generate a binary image. They are implemented in these functions.
+* `mag_thresh` : Magnitude Threshold
+* `dir_threshold`: Thresholded absolute value of the gradient direction
+* `hls_select`: Apply threshold to S channel
 
-![alt text][image3]
+Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+
+In the notebook, used a test image to view undistorted and thresholded images side by side (see `process_test_images` function)
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -79,17 +84,23 @@ This resulted in the following source and destination points:
 | 1127, 720     | 960, 720      |
 | 695, 460      | 960, 0        |
 
-I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
-![alt text][image4]
+In the notebook, used a test image to view original and processed images side by side (see `process_test_images` function)
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Identified and fit lane line pixels in the `Lanes` class insided the `detect_lanes` function kinda like this:
+![Poly][image5]
 
-![alt text][image5]
+If there is not a previously detected lane:
+    * Take histogram, find peaks, use sliding windows, extract left and right line pixel positions and fit a poly
+    * Set current_fit/best_fit properties of the `Lane` object to use in subsequent frames
+
+If there is a previously detected lane:
+    * Search in a margin around the previous line position
+    * Set current_fit/best_fit properties of the `Lane` object to use in subsequent frames
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+
 
 I did this in lines # through # in my code in `my_other_file.py`
 
