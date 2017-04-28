@@ -101,14 +101,13 @@ If there is a previously detected lane:
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-
-I did this in lines # through # in my code in `my_other_file.py`
+Calculated radius of curvature in the `curvature` function. 
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this step in `draw_lane_line` function 
 
-![alt text][image6]
+In the notebook, used a test image to view original and processed images side by side (see `process_test_images` function)
 
 ---
 
@@ -116,7 +115,7 @@ I implemented this step in lines # through # in my code in `yet_another_file.py`
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./processed_simple.mp4)
 
 ---
 
